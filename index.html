@@ -104,6 +104,15 @@
         .modal-button:hover {
             background-color: #FF6347;
         }
+
+        @media only screen and (max-width: 600px) {
+            #progress-bar {
+                width: 90%;
+            }
+            #rose-image {
+                max-height: 50vh;
+            }
+        }
     </style>
 </head>
 <body>
@@ -149,6 +158,8 @@
             });
 
             // Reset modal state when opening
+            document.getElementById('yes-button').style.display = 'inline-block';
+            document.getElementById('no-button').style.display = 'inline-block';
             document.getElementById('rose-image').src = roseImages[0]; // Reset image to the first one
         }
 
@@ -181,6 +192,7 @@
 
         function showRose1() {
             document.getElementById('rose-image').src = roseImages[0];
+            document.getElementById('rose-modal').innerHTML = document.getElementById('rose-modal').innerHTML.replace('<button id="sorry-button" class="modal-button" onclick="showRose1()">Sorry</button>', '');
             document.getElementById('yes-button').style.display = 'inline-block';
             document.getElementById('no-button').style.display = 'inline-block';
             var thankYouButton = document.getElementById('thank-you-button');
