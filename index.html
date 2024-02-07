@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Week</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: linear-gradient(to right top, #e5b6d0, #e5a1c6, #e68abb, #e573af, #e458a2, #e461ad, #e36ab7, #e273c1, #e09bdd, #e2bff0, #ece0fb, #ffffff);
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #D32F2F;
+        }
+
+        #progress-bar {
+            width: 70%;
+            margin: 50px auto;
+            background-color: #ddd;
+            height: 30px;
+            position: relative;
+            border-radius: 5px;
+        }
+
+        .stage {
+            position: absolute;
+            height: 100%;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #rose-day { left: 0; width: 14.2857%; background-color: #FF1493; }
+        #purpose-day { left: 14.2857%; width: 14.2857%; background-color: #FF6347; }
+        #chocolate-day { left: 28.5714%; width: 14.2857%; background-color: #8B4513; }
+        #teddy-day { left: 42.8571%; width: 14.2857%; background-color: #D2691E; }
+        #promise-day { left: 57.1428%; width: 14.2857%; background-color: #FFD700; }
+        #hug-day { left: 71.4285%; width: 14.2857%; background-color: #4CAF50; }
+        #kiss-day { left: 85.7142%; width: 14.2857%; background-color: #FF69B4; }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .modal-close {
+            cursor: pointer;
+            font-size: 20px;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #aaa;
+        }
+
+        #rose-image {
+            max-width: 30%;
+            max-height: 30%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .modal-button {
+            background-color: #D32F2F;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        .modal-button:hover {
+            background-color: #FF6347;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Deeksha baby's Valentine</h1>
+    
+    <div id="progress-bar">
+        <div id="rose-day" class="stage" onclick="openModal('rose')">Rose Day</div>
+        <div id="purpose-day" class="stage" onclick="openModal('purpose')">Purpose Day</div>
+        <div id="chocolate-day" class="stage" onclick="openModal('chocolate')">Chocolate Day</div>
+        <div id="teddy-day" class="stage" onclick="openModal('teddy')">Teddy Day</div>
+        <div id="promise-day" class="stage" onclick="openModal('promise')">Promise Day</div>
+        <div id="hug-day" class="stage" onclick="openModal('hug')">Hug Day</div>
+        <div id="kiss-day" class="stage" onclick="openModal('kiss')">Kiss Day</div>
+    </div>
+
+    <!-- Modal for Rose Day -->
+    <div id="rose-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('rose')">&times;</span>
+            <img id="rose-image" src="D:/Work/Project Valentine/Rose1.png" alt="Rose Image">
+            <div>
+                <button id="yes-button" class="modal-button" onclick="showRose2()">Yes</button>
+                <button id="no-button" class="modal-button" onclick="showRose3()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var roseImages = [
+            "D:/Work/Project Valentine/Rose1.png",
+            "D:/Work/Project Valentine/Rose2.jpg",
+            "D:/Work/Project Valentine/Rose3.jpeg"
+        ];
+
+        function openModal(day) {
+            var modal = document.getElementById(day + '-modal');
+            modal.style.display = 'flex';
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal(day);
+                }
+            });
+
+            // Reset modal state when opening
+            document.getElementById('rose-image').src = roseImages[0]; // Reset image to the first one
+        }
+
+        function closeModal(day) {
+            var modal = document.getElementById(day + '-modal');
+            modal.style.display = 'none';
+        }
+
+        function showRose2() {
+            document.getElementById('rose-image').src = roseImages[1];
+            document.getElementById('yes-button').style.display = 'none';
+            document.getElementById('no-button').style.display = 'none';
+            var thankYouButton = document.getElementById('thank-you-button');
+            if (thankYouButton) {
+                thankYouButton.remove();
+            }
+            document.getElementById('rose-modal').innerHTML += '<button id="thank-you-button" class="modal-button" onclick="closeModal(\'rose\')">Thank You</button>';
+        }
+
+        function showRose3() {
+            document.getElementById('rose-image').src = roseImages[2];
+            document.getElementById('yes-button').style.display = 'none';
+            document.getElementById('no-button').style.display = 'none';
+            var sorryButton = document.getElementById('sorry-button');
+            if (sorryButton) {
+                sorryButton.remove();
+            }
+            document.getElementById('rose-modal').innerHTML += '<button id="sorry-button" class="modal-button" onclick="showRose1()">Sorry</button>';
+        }
+
+        function showRose1() {
+            document.getElementById('rose-image').src = roseImages[0];
+            document.getElementById('yes-button').style.display = 'inline-block';
+            document.getElementById('no-button').style.display = 'inline-block';
+            var thankYouButton = document.getElementById('thank-you-button');
+            if (thankYouButton) {
+                thankYouButton.remove();
+            }
+            var sorryButton = document.getElementById('sorry-button');
+            if (sorryButton) {
+                sorryButton.remove();
+            }
+        }
+    </script>
+
+</body>
+</html>
